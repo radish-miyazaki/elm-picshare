@@ -6167,18 +6167,13 @@ var $author$project$Picshare$init = function (_v0) {
 var $author$project$Picshare$LoadStreamPhoto = function (a) {
 	return {$: 'LoadStreamPhoto', a: a};
 };
-var $elm$core$Basics$composeL = F3(
-	function (g, f, x) {
-		return g(
-			f(x));
-	});
 var $author$project$WebSocket$receive = _Platform_incomingPort('receive', $elm$json$Json$Decode$string);
 var $author$project$Picshare$subscriptions = function (model) {
 	return $author$project$WebSocket$receive(
-		A2(
-			$elm$core$Basics$composeL,
-			$author$project$Picshare$LoadStreamPhoto,
-			$elm$json$Json$Decode$decodeString($author$project$Picshare$photoDecoder)));
+		function (json) {
+			return $author$project$Picshare$LoadStreamPhoto(
+				A2($elm$json$Json$Decode$decodeString, $author$project$Picshare$photoDecoder, json));
+		});
 };
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$WebSocket$listen = _Platform_outgoingPort('listen', $elm$json$Json$Encode$string);
