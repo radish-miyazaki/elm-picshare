@@ -339,7 +339,8 @@ errorMessage error =
 subscriptions : Model -> Sub Msg
 subscriptions model =
     WebSocket.receive
-        (LoadStreamPhoto << decodeString photoDecoder)
+        -- (LoadStreamPhoto << decodeString photoDecoder)
+        (\json -> LoadStreamPhoto (decodeString photoDecoder json))
 
 
 main : Program () Model Msg
