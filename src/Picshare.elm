@@ -337,7 +337,7 @@ errorMessage error =
 
 
 subscriptions : Model -> Sub Msg
-subscriptions model =
+subscriptions _ =
     WebSocket.receive
         -- (LoadStreamPhoto << decodeString photoDecoder)
         (\json -> LoadStreamPhoto (decodeString photoDecoder json))
